@@ -26,6 +26,7 @@ const validate = (data) =>{
         email: joi.string().required().email().label("Email"),
         password: passwordComplexity().required().label("Password"),
     })
+    return schema.validate(data)
 }
 
 module.exports = {User, validate};

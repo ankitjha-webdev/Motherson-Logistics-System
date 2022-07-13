@@ -32,7 +32,7 @@ const Register = () => {
     try {
       const url = "http://localhost:8080/api/user";
       const {data:res} = await axios.post(url, data);
-      nevigate('/login')
+      nevigate('/')
       console.log(res.message);
       
     } catch (error) {
