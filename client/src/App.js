@@ -11,20 +11,22 @@ import Master from "./pages/Master";
 import Register from "./pages/Register";
 
 function App() {
-  const user = false;
+  const user = localStorage.getItem("token");
   return (
     <div className="App">
       <Router>
 
         <Routes>
 
-          <Route path="/dashboard" exact element={<Dashboard />} />
+          {user && <Route path="/dashboard" exact element={<Dashboard />} />}
 
           <Route path="/register" exact element={user ? <Dashboard /> : <Register />} />
 
           <Route path="forgotpassword" exact element={<ForgotPassword />} />
 
-          <Route path="/" exact element={user ? <Dashboard /> : <Login />} />
+          {<Route path="/" exact element={<Login />} />}
+
+          {/* <Route path="/dashboard" */}
 
           <Route path='/about' exact element={user ? <Dashboard /> : <About />} />
 

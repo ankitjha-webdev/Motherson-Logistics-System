@@ -8,22 +8,25 @@ import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { Grid, MenuItem } from '@mui/material';
 import Menu from '@mui/material/Menu';
-import profile from '../../images/pp.jpg'
+import profile from '../../images/raj.jpg'
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import CorporateFareIcon from '@mui/icons-material/CorporateFare';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
 
   const [user, setUser] = useState()
+  const navigate = useNavigate()
   const login = () => {
     setUser(false)
   }
-  const logout = () => {
-    setUser(true)
+  const logout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem("token");
+    navigate('/')
   }
 
   return (
